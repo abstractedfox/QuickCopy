@@ -72,3 +72,14 @@ function htmlToClipboard(html){
     //The div contains leading and trailing linebreaks for formatting, but we don't want those in the output
     navigator.clipboard.writeText(html.innerHTML.substring(1, html.innerHTML.length - 2));
 }
+
+function clearwarning(){
+    var element = document.getElementById("notthere");
+    element.innerHTML = "";
+}
+
+function showwarning(event){
+    event.preventDefault();
+    var element = document.getElementById("notthere");
+    element.innerHTML = "No, not that one";
+}

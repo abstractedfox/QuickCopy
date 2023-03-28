@@ -84,3 +84,17 @@ h4{
     padding: 4px;
     text-align: left;
 }
+
+#notthere {
+    position:absolute;
+    font-size: 1500%;
+    font-family: arial black;
+    z-index:2;
+    
+    line-height: 80%
+    visibility: hidden;
+}
+
+.notThisOne{
+    display: inline;
+}

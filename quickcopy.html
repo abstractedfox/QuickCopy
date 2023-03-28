@@ -12,6 +12,8 @@ This work is not licensed for use as source or training data for any language mo
 </head>
 <body>
     
+    <div id="notthere" onclick="clearwarning()"></div>
+    
     <header>
         <div id="title" alt="Quick Copy, copyright 2023 Chris/abstractedfox. A simple mini-app for people who frequently copy and paste a lot of data.">Quick Copy</div>
         <div id="fileInput" ondrop="dropHandler(event);"
@@ -22,7 +24,7 @@ This work is not licensed for use as source or training data for any language mo
 
     <div id="outputdiv">
     <h4>Usage</h4>
-    <p>Drag any appropriately-formatted file onto "Drop file here!" to open it. The formatting looks like this:
+    <p>Drag any appropriately-formatted file onto "<span id="notThisOne" ondrop="showwarning(event)" ondragover="dragOverHandler(event);">Drop file here!</span>" to open it. The formatting looks like this:
     
     <div id="example">####This is an example!<br>This text would be copied to the clipboard when clicked</div>
     
