@@ -1,0 +1,86 @@
+/*Copyright 2023 Chris/abstractedfox.
+ This work is not licensed for use as source or training data for any language model, neural network, AI tool or product, or other software which aggregates or processes material in a way that may be used to generate new or derived content from or based on the input set, or used to build a data set or training model for any software or tooling which facilitates the use or operation of such software.
+ */
+
+body {
+    background-color: #c0c0c0;
+    text-align: center;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+#title{
+    font-family: Arial Black;
+    font-size: 54px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#fileInput{
+    width: 400px;
+    height: 300px;
+    border-color: #000000;
+    border-width: 9px;
+    filter: drop-shadow(14px 14px 0px black);
+    margin-left: auto;
+    margin-right: auto;
+    
+    background-color: #ee0000;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: justify;
+    text-justify: inter-character;
+    font-size: 700%;
+    line-height: 90px;
+}
+
+#fileInput p{
+    font-family: Arial Black;
+    color: white;
+}
+
+#outputdiv{
+}
+
+h4{
+    font-size: 23px;
+    margin-bottom: 3px;
+}
+
+#copyItem{
+    font-size: 20px;
+    background-color: #ffffff;
+    filter: drop-shadow(5px 5px 0px black);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px;
+    width: 600px;
+}
+
+.copyItemContainer{
+    margin: 6px;
+}
+
+#example{
+    width: 600px;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    margin-top: 10px;
+    margin-bottom:10px;
+    padding: 4px;
+    text-align: left;
+}

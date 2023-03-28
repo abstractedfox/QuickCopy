@@ -1,8 +1,39 @@
+<!--
+Copyright 2023 Chris/abstractedfox.
+This work is not licensed for use as source or training data for any language model, neural network, AI tool or product, or other software which aggregates or processes material in a way that may be used to generate new or derived content from or based on the input set, or used to build a data set or training model for any software or tooling which facilitates the use or operation of such software.
+-->
+<!DOCTYPE html>
 <html>
 <head><title>Quick Copy!</title>
-<script src="script.js"></script>
+    <script src="script.js">
+        
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-Hello
+    
+    <header>
+        <div id="title" alt="Quick Copy, copyright 2023 Chris/abstractedfox. A simple mini-app for people who frequently copy and paste a lot of data.">Quick Copy</div>
+        <div id="fileInput" ondrop="dropHandler(event);"
+            ondragover="dragOverHandler(event);">
+            <p>Drop file here!</p>
+        </div>
+    </header>
+
+    <div id="outputdiv">
+    <h4>Usage</h4>
+    <p>Drag any appropriately-formatted file onto "Drop file here!" to open it. The formatting looks like this:
+    
+    <div id="example">####This is an example!<br>This text would be copied to the clipboard when clicked</div>
+    
+    The results would look like this:
+    
+    <div id="copyItemContainer">
+        <h4>This is an example!</h4>
+        <div id="copyItem" onclick="htmlToClipboard(this)"> This text would be copied to the clipboard when clicked  </div>
+    </div>
+    
+    </div>
+    
 </body>
 </html>
