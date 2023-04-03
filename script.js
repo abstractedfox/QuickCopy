@@ -14,7 +14,7 @@ function dropHandler(event){
     
         fileContents.onloadend = function(){
             var results = fileContents.result;
-            fillPage(results);
+            fillPageBetter(results);
         }
     }
 }
@@ -23,31 +23,38 @@ function dragOverHandler(event){
     event.preventDefault();
 }
 
-function fillPage(contents){
-    var elementTitleMarker= "####";
+function fillPageBetter(contents){
+    var elementTitleMarker = "####";
+    var template = "<div class=\"copyItemContainer\"><h4>title</h4><div onclick=\"htmlToClipboard(this)\" id=\"copyItem\">copyitem</div></div>";
+    var results = "";
     
-    
-    var closeLastDiv = false;
-    
-    while (contents.indexOf(elementTitleMarker) > -1){
-        var offset = contents.indexOf(elementTitleMarker);
-        if (!closeLastDiv){
-            contents = contents.replace(elementTitleMarker, "<div class=\"copyItemContainer\"><h4>");
+    while (contents.length > 0){
+        var thisElement = contents.indexOf(elementTitleMarker);
+        var titleLineEnd = getLineEndingPosition(contents, thisElement);
+        var newEntry = template;
+        var elementEnd = contents.indexOf(elementTitleMarker, titleLineEnd);
+        
+        if (elementEnd != -1){
+            var newvalue = contents.substring(thisElement + elementTitleMarker.length, titleLineEnd);
+            newEntry = newEntry.replace("title", newvalue);
+            
+            newvalue = contents.substring(titleLineEnd + 1, elementEnd - 1);
+            newEntry = newEntry.replace("copyitem", newvalue);
         }
         else{
-            contents = contents.replace(elementTitleMarker, "</div></div><div class=\"copyItemContainer\"><h4>");
+            var newvalue = contents.substring(thisElement + elementTitleMarker.length, titleLineEnd);
+            newEntry = newEntry.replace("title", newvalue);
+            
+            newvalue = contents.substring(titleLineEnd);
+            newEntry = newEntry.replace("copyitem", newvalue);
+            results += newEntry;
+            break;
         }
-        
-        var lineEnd = getLineEndingPosition(contents, offset);
-        contents = stringInsert(contents, "</h4><div onclick=\"htmlToClipboard(this)\" id=\"copyItem\">", lineEnd);
-        
-        closeLastDiv = true;
+        results += newEntry;
+        contents = contents.substring(elementEnd);
     }
     
-    contents += "</div></div>";
-    
-    document.getElementById("outputdiv").innerHTML = contents;
-    
+    document.getElementById("outputdiv").innerHTML = results;
 }
 
 function getLineEndingPosition(sourceString, startIndex){
@@ -69,8 +76,10 @@ function stringInsert(source, stringToInsert, offset){
 }
 
 function htmlToClipboard(html){
-    //The div contains leading and trailing linebreaks for formatting, but we don't want those in the output
-    navigator.clipboard.writeText(html.innerHTML.substring(1, html.innerHTML.length - 2));
+    var output = html.innerHTML;
+    while (output[0] == " " || output[0] == "\n" || output[0] == "\r") output = output.substring(1);
+    while (output[output.length - 1] == "\n" || output[output.length - 1] == "\r" || output[output.length - 1] == " ") output = output.substring(0, output.length - 1);
+    navigator.clipboard.writeText(output);
 }
 
 function clearwarning(){
