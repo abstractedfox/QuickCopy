@@ -98,3 +98,20 @@ h4{
 .notThisOne{
     display: inline;
 }
+
+#resetcolors{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding: 15px;
+    filter: drop-shadow(5px 5px 0px black);
+    margin-top: 17px;
+    background-color: #11ffff;
+    height: 60px;
+    width: 160px;
+    font-family: Arial Black;
+}

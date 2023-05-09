@@ -80,6 +80,18 @@ function htmlToClipboard(html){
     while (output[0] == " " || output[0] == "\n" || output[0] == "\r") output = output.substring(1);
     while (output[output.length - 1] == "\n" || output[output.length - 1] == "\r" || output[output.length - 1] == " ") output = output.substring(0, output.length - 1);
     navigator.clipboard.writeText(output);
+    html.style["background-color"] = "#55ff55";
+}
+
+function resetColors(){
+    let tags = document.getElementsByTagName("div");
+    //tags.forEach(item => item.style["background-color"]) = "#ffffff";
+    
+    for (tag of tags){
+        if (tag.id == "copyItem"){
+            tag.style["background-color"] = "#ffffff";
+        }
+    }
 }
 
 function clearwarning(){
